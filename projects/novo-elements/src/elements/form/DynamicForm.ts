@@ -117,7 +117,7 @@ export class NovoDynamicFormElement implements OnChanges, OnInit, AfterContentIn
   @Input()
   layout: string;
   @Input()
-  hideNonRequiredFields: boolean = true;
+  hideNonRequiredFields: boolean = false;
   @Input()
   autoFocusFirstField: boolean = false;
   @ContentChildren(NovoTemplate)
@@ -126,7 +126,7 @@ export class NovoDynamicFormElement implements OnChanges, OnInit, AfterContentIn
 
   allFieldsRequired = false;
   allFieldsNotRequired = false;
-  showingAllFields = false;
+  showingAllFields = true;
   showingRequiredFields = true;
   numControls = 0;
 
@@ -207,9 +207,9 @@ export class NovoDynamicFormElement implements OnChanges, OnInit, AfterContentIn
         }
 
         // Hide any non-required fields
-        if (!control.required) {
-          ctl.hidden = true;
-        }
+        // if (!control.required) {
+        //   ctl.hidden = true;
+        // }
 
         // Hide required fields that have been successfully filled out
         if (
@@ -226,7 +226,7 @@ export class NovoDynamicFormElement implements OnChanges, OnInit, AfterContentIn
         }
       });
     });
-    this.showingAllFields = false;
+    this.showingAllFields = true;
     this.showingRequiredFields = true;
     this.forceValidation();
   }
